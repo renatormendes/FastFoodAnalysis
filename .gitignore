@@ -1,5 +1,7 @@
 *.class
 bin/
+lib/*.jar
 *.db
 *.bin
-lib/
+.DS_Store
+deploy.sh

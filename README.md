@@ -71,5 +71,5 @@ Ao clicar em "Relatórios", o sistema gera um resumo formatado:
 - **Faturamento por Categoria:** Soma os valores totais de Lanches, Bebidas, etc.
 
 ## ✒️ Autor
-Desenvolvido por **[Seu Nome Aqui]** como parte de um portfólio de engenharia de software e análise de dados.
+Desenvolvido por **Renato Mendes** como parte de um portfólio de engenharia de software e análise de dados.
 
