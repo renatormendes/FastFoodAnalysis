@@ -28,7 +28,7 @@ git remote add origin "$URL_FINAL"
 
 # 6. Envio e Abertura do Navegador
 echo "[!] Forçando envio para: $URL_FINAL"
-if git push -u origin main; then
+if git push -u origin main -f; then
     echo -e "\n### [OK] SUCESSO! ###"
     xdg-open "https://github.com/${USUARIO}/${NOME_PASTA}" &
 else
