@@ -4,3 +4,7 @@ lib/*.class
 *.db
 *.bin
 lib/
+*.class
+*.db
+*.bin
+lib/
