@@ -30,8 +30,8 @@ git remote add origin "$URL_FINAL"
 echo "[!] Forçando envio para: $URL_FINAL"
 if git push -u origin main; then
     echo -e "\n### [OK] SUCESSO! ###"
-    xdg-open "https://github.com{USUARIO}/${NOME_PASTA}" &
+    xdg-open "https://github.com/${USUARIO}/${NOME_PASTA}" &
 else
     echo -e "\n### [ERRO] O GitHub recusou o envio. ###"
-    echo "Certifique-se que o repositório '${NOME_PASTA}' existe em ://github.com{USUARIO}"
+    echo "Certifique-se que o repositório '${NOME_PASTA}' existe em ://github.com/${USUARIO}"
 fi
