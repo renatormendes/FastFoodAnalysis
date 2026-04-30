@@ -1,0 +1,6 @@
+*.class
+vendas.db
+lib/*.class
+*.db
+*.bin
+lib/
