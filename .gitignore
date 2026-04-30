@@ -3,5 +3,4 @@ bin/
 lib/*.jar
 *.db
 *.bin
-.DS_Store
 deploy.sh

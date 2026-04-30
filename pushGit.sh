@@ -1,49 +1,37 @@
 #!/bin/bash
 
-# Identifica automaticamente o nome da pasta atual como o nome do REPO
-USER="renatormendes"
-REPO=$(basename "$(pwd)")
-URL="https://github.com"
+# 1. Configuração Manual Garantida
+USUARIO="renatormendes"
+NOME_PASTA=$(basename "$(pwd)")
+URL_FINAL="https://github.com/{USUARIO}/${NOME_PASTA}.git"
 
-echo "### Iniciando Automação Total: $REPO ###"
+echo "### Iniciando Automação Total: $NOME_PASTA ###"
 
-# 1. Inicializa o Git se não existir
+# 2. Inicialização do Git
 if [ ! -d ".git" ]; then
-    echo "[!] Inicializando repositório Git local em: $REPO"
     git init
     git branch -M main
 fi
 
-# 2. Configura o .gitignore
-cat <<EOF > .gitignore
-*.class
-bin/
-lib/*.jar
-*.db
-*.bin
-.DS_Store
-deploy.sh
-EOF
+# 3. Configuração do .gitignore
+echo -e "*.class\nbin/\nlib/*.jar\n*.db\n*.bin\ndeploy.sh" > .gitignore
 
-# 3. Adiciona arquivos e Comita
-echo "[!] Preparando arquivos..."
+# 4. Commit
 git add .
-read -p "Mensagem do commit (Enter para padrão): " msg
-[ -z "$msg" ] && msg="Auto-deploy: $(date +'%d/%m/%Y %H:%M')"
+read -p "Mensagem do commit: " msg
+[ -z "$msg" ] && msg="Deploy $(date +'%d/%m/%Y')"
 git commit -m "$msg"
 
-# 4. Configura o Remote
-git remote set-url origin "$URL" 2>/dev/null || git remote add origin "$URL"
+# 5. Reset do Remote (Limpa qualquer erro anterior de URL)
+git remote remove origin 2>/dev/null
+git remote add origin "$URL_FINAL"
 
-# 5. Envio
-echo "[!] Enviando para: $URL"
-git push -u origin main
-
-if [ $? -eq 0 ]; then
-    echo -e "\n### [OK] SUCESSO! ABRINDO O NAVEGADOR... ###"
-    # Comando para abrir o navegador no Linux (Linux Lite/Ubuntu/Debian)
-    xdg-open "https://github.com" &
+# 6. Envio e Abertura do Navegador
+echo "[!] Forçando envio para: $URL_FINAL"
+if git push -u origin main; then
+    echo -e "\n### [OK] SUCESSO! ###"
+    xdg-open "https://github.com{USUARIO}/${NOME_PASTA}" &
 else
-    echo -e "\n### [ERRO] O envio falhou. ###"
-    echo "Verifique se o repositório '$REPO' foi criado no seu GitHub."
+    echo -e "\n### [ERRO] O GitHub recusou o envio. ###"
+    echo "Certifique-se que o repositório '${NOME_PASTA}' existe em ://github.com{USUARIO}"
 fi
