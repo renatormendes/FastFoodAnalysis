@@ -3,7 +3,7 @@
 # 1. Configuração Manual Garantida
 USUARIO="renatormendes"
 NOME_PASTA=$(basename "$(pwd)")
-URL_FINAL="https://github.com/{USUARIO}/${NOME_PASTA}.git"
+URL_FINAL="https://github.com/${USUARIO}/${NOME_PASTA}.git"
 
 echo "### Iniciando Automação Total: $NOME_PASTA ###"
 
