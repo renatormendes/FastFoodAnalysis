@@ -8,3 +8,7 @@ lib/
 *.db
 *.bin
 lib/
+*.class
+*.db
+*.bin
+lib/
