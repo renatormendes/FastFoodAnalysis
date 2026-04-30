@@ -19,7 +19,7 @@ git commit -m "$msg"
 git branch -M main
 
 # URL correta baseada no seu perfil
-URL="https://github.com/FastFoodAnalysis.git"
+URL="https://github.com/renatormendes/FastFoodAnalysis.git"
 
 # Se o 'origin' já existir, ele atualiza a URL. Se não, ele cria.
 if git remote | grep -q "origin"; then
